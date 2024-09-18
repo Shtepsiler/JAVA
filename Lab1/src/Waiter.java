@@ -1,6 +1,6 @@
 public class Waiter implements Runnable{
     private String tableName;
-
+    public String getTableName() {return tableName;}
     public Waiter(String tableName) {
         this.tableName = tableName;
     }
