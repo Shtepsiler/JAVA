@@ -1,45 +1,47 @@
 package org.example;
 
 import java.util.Scanner;
+
 public class Main {
-    private static void conflictBowers(){
-        Conflict first = new Conflict("Потік 1");
-        Conflict second = new Conflict("Потік 2");
-        first.setBower(second);
-        second.setBower(first);
 
-        Thread firstThread = new Thread(first);
-        Thread secondThread = new Thread(second);
+    // Симуляція конфлікту між відділами компанії
+    private static void conflictDepartments() {
+        Conflict sales = new Conflict("Відділ Продажів");
+        Conflict marketing = new Conflict("Відділ Маркетингу");
+        sales.setPartnerDepartment(marketing);
+        marketing.setPartnerDepartment(sales);
 
-        firstThread.start();
-        secondThread.start();
+        Thread salesThread = new Thread(sales);
+        Thread marketingThread = new Thread(marketing);
+
+        salesThread.start();
+        marketingThread.start();
     }
-    private static void resolvedBowers(){
-        ResolvedConflict first = new ResolvedConflict("Потік 1");
-        ResolvedConflict second = new ResolvedConflict("Потік 2");
-        first.setBower(second);
-        second.setBower(first);
 
-        Thread firstThread = new Thread(first);
-        Thread secondThread = new Thread(second);
+    // Симуляція вирішення конфлікту між відділами компанії
+    private static void resolvedDepartments() {
+        ResolvedConflict finance = new ResolvedConflict("Відділ Фінансів");
+        ResolvedConflict legal = new ResolvedConflict("Юридичний Відділ");
+        finance.setPartnerDepartment(legal);
+        legal.setPartnerDepartment(finance);
 
-        firstThread.start();
-        secondThread.start();
+        Thread financeThread = new Thread(finance);
+        Thread legalThread = new Thread(legal);
+
+        financeThread.start();
+        legalThread.start();
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Виберіть програму: 0 - з конфліктом, 1 - з вирішеним конфліктом");
+        System.out.println("Виберіть програму: 0 - симуляція конфлікту між відділами, 1 - вирішення конфлікту");
         int choice = scanner.nextInt();
 
-        if(choice == 0)
-        {
-            conflictBowers();
+        if (choice == 0) {
+            conflictDepartments();  // Симуляція конфлікту між відділами
+        } else {
+            resolvedDepartments();  // Симуляція вирішення конфлікту
         }
-        else {
-            resolvedBowers();
-        }
-
-
     }
 }

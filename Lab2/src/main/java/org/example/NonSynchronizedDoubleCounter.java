@@ -7,7 +7,7 @@ public class NonSynchronizedDoubleCounter {
     public void incrementC1() throws InterruptedException {
        // System.out.println(Thread.currentThread().getName() + " викликає incrementC1");
         int a;
-        Thread.sleep(0); // Імітація затримки
+        Thread.sleep(123); // Імітація затримки
         a = c1;
        // System.out.println(Thread.currentThread().getName() + " прочитав c1 = " + a);
         a++;
@@ -18,7 +18,7 @@ public class NonSynchronizedDoubleCounter {
     public void decrementC1() throws InterruptedException {
       //  System.out.println(Thread.currentThread().getName() + " викликає decrementC1");
         int a;
-        Thread.sleep(0); // Імітація затримки
+        Thread.sleep(234); // Імітація затримки
         a = c1;
        // System.out.println(Thread.currentThread().getName() + " прочитав c1 = " + a);
         a--;
@@ -29,7 +29,7 @@ public class NonSynchronizedDoubleCounter {
     public void incrementC2() throws InterruptedException {
       //  System.out.println(Thread.currentThread().getName() + " викликає incrementC2");
         int a;
-        Thread.sleep(0); // Імітація затримки
+        Thread.sleep(345); // Імітація затримки
         a = c2;
      //   System.out.println(Thread.currentThread().getName() + " прочитав c2 = " + a);
         a++;
@@ -40,7 +40,7 @@ public class NonSynchronizedDoubleCounter {
     public void decrementC2() throws InterruptedException {
       //  System.out.println(Thread.currentThread().getName() + " викликає decrementC2");
         int a;
-        Thread.sleep(0); // Імітація затримки
+        Thread.sleep(456); // Імітація затримки
         a = c2;
       //  System.out.println(Thread.currentThread().getName() + " прочитав c2 = " + a);
         a--;

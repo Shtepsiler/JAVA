@@ -9,7 +9,7 @@ class SynchronizedDoubleCounter {
         synchronized (lock1) {
            // System.out.println(Thread.currentThread().getName() + " викликає synchronized block для c1");
             int a;
-            Thread.sleep(300);
+            Thread.sleep(200);
             a = c1;
          //   System.out.println(Thread.currentThread().getName() + " прочитав c1 = " + a);
             a++;
@@ -22,7 +22,7 @@ class SynchronizedDoubleCounter {
         synchronized (lock1) {
          //   System.out.println(Thread.currentThread().getName() + " викликає synchronized block для c1");
             int a;
-            Thread.sleep(300);
+            Thread.sleep(200);
             a = c1;
          //   System.out.println(Thread.currentThread().getName() + " прочитав c1 = " + a);
             a--;
@@ -35,7 +35,7 @@ class SynchronizedDoubleCounter {
         synchronized (lock2) {
         //    System.out.println(Thread.currentThread().getName() + " викликає synchronized block для c2");
             int a;
-            Thread.sleep(300);
+            Thread.sleep(200);
             a = c2;
          //   System.out.println(Thread.currentThread().getName() + " прочитав c2 = " + a);
             a++;
@@ -48,7 +48,7 @@ class SynchronizedDoubleCounter {
         synchronized (lock2) {
         //    System.out.println(Thread.currentThread().getName() + " викликає synchronized block для c2");
             int a;
-            Thread.sleep(300);
+            Thread.sleep(200);
             a = c2;
 //System.out.println(Thread.currentThread().getName() + " прочитав c2 = " + a);
             a--;

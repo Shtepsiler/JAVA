@@ -5,7 +5,7 @@ public class SynchronizedCounter {
 
     public synchronized void increment() throws InterruptedException {
         int a;
-        Thread.sleep(150);
+        Thread.sleep(0);
         a = c;
         a++;
         c = a;
@@ -13,7 +13,7 @@ public class SynchronizedCounter {
 
     public synchronized void decrement() throws InterruptedException {
         int a;
-        Thread.sleep(100);
+        Thread.sleep(200);
         a = c;
         a--;
         c = a;

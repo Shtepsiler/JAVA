@@ -70,14 +70,15 @@ public class Main {
 
             // Запускаємо потоки
             t3.start();
+            t3.join();
             t4.start();
 
-            t3.join();
+
             t4.join();
         }
         System.out.println();
         NonSynchronizedDoubleCounter nonSynchronizedDoubleCounter = new NonSynchronizedDoubleCounter();
-        for(int j =0;j<n*9;j++) {
+        for(int j =0;j<n*3;j++) {
         Thread t5 = new Thread(() -> {
             try {
                     nonSynchronizedDoubleCounter.incrementC1();
@@ -105,7 +106,7 @@ public class Main {
         System.out.println();
 
 
-        for(int j =0;j<n*9;j++) {
+        for(int j =0;j<n*3;j++) {
 
             Thread t7 = new Thread(() -> {
                 try {

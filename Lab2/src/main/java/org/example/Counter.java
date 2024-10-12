@@ -6,7 +6,7 @@ class Counter {
     public void increment() throws InterruptedException {
         int a;
         //System.out.println(Thread.currentThread().getName() + " викликає increment() без синхронізації");
-        Thread.sleep(150); // Імітація затримки
+        Thread.sleep(123); // Імітація затримки
         a = c;
        // System.out.println(Thread.currentThread().getName() + " прочитав c = " + a);
         a++;
@@ -17,7 +17,7 @@ class Counter {
     public void decrement() throws InterruptedException {
         int a;
      //   System.out.println(Thread.currentThread().getName() + " викликає decrement() без синхронізації");
-        Thread.sleep(100); // Імітація затримки
+        Thread.sleep(200); // Імітація затримки
         a = c;
       //  System.out.println(Thread.currentThread().getName() + " прочитав c = " + a);
         a--;

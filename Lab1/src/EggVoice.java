@@ -6,7 +6,7 @@ public class EggVoice extends Thread{
         for(int i = 0; i < 5; i++)
         {
             try{
-                sleep(1000);
+                sleep(100);
             }catch(InterruptedException e){}
             System.out.println("яйце!");
         }

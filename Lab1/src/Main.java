@@ -1,46 +1,34 @@
-import java.util.Random;
-
 public class Main {
-    static EggVoice mAnotherOpinion;
+    static EggVoice eggVoice;
+    static DinoVoice dinoVoice;
 
-    public static void main(String[] args) {
-        mAnotherOpinion = new EggVoice();
+    public static void main(String[] args) throws InterruptedException {
+        eggVoice = new EggVoice();
+        dinoVoice = new DinoVoice();
+
         System.out.println("Початок суперечки...");
-        mAnotherOpinion.start();
-        for(int i = 0; i < 5; i++)
-        {
-            try{
-                Thread.sleep(1000);
-            }catch(InterruptedException e){}
+
+        eggVoice.start();
+        dinoVoice.start();
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
             System.out.println("курка!");
         }
-        if(mAnotherOpinion.isAlive())
-        {
-            try{
-                mAnotherOpinion.join();
-            }catch(InterruptedException e){}
+
+        if (!eggVoice.isAlive() && !dinoVoice.isAlive()) {
+            System.out.println("Першим було курка!");
+        } else if (eggVoice.isAlive()) {
+            eggVoice.join();
             System.out.println("Першим було яйце!");
+        } else if (dinoVoice.isAlive()) {
+            dinoVoice.join();
+            System.out.println("Першим був динозавр!");
         }
-        else
-        {
-            System.out.println("Першою була курка!");
-        }
+
         System.out.println("Завершення суперечки!");
-
-
-        try{
-            Thread.sleep(1000);
-        }catch(InterruptedException e){}
-        System.out.println();
-
-        System.out.println("Симуляція роботи ресторану");
-
-        String[] tables = {"Стіл 1", "Стіл 2", "Стіл 3"};
-        for (String table : tables) {
-            Waiter waiter = new Waiter(table);
-            Table thread = new Table(waiter);
-
-            thread.start();
-        }
     }
 }

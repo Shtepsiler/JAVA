@@ -1,31 +1,41 @@
 package org.example;
 
-public class Conflict  implements Runnable{
-    private final String name;
-    private Conflict bower;
-    public Conflict (String name){
-        this.name = name;
+public class Conflict implements Runnable {
+    private final String departmentName;  // Ім'я відділу
+    private Conflict partnerDepartment;   // Відділ-партнер
+
+    public Conflict(String departmentName) {
+        this.departmentName = departmentName;
     }
-    public String getName() {
-        return this.name;
+
+    public String getDepartmentName() {
+        return this.departmentName;
     }
-    public void setBower(Conflict bower){
-        this.bower = bower;
+
+    public void setPartnerDepartment(Conflict partnerDepartment) {
+        this.partnerDepartment = partnerDepartment;
     }
-    public synchronized void bow() {
-        System.out.format("%s: %s"
-                        + " пропускає мене!%n",
-                this.name, this.bower.getName());
-        this.bower.bowBack(this);
+
+    public synchronized void negotiate() {
+        System.out.format("%s: Чекає рішення від відділу %s...%n",
+                this.departmentName, this.partnerDepartment.getDepartmentName());
+        this.partnerDepartment.finalizeDecision(this);  // Перший відділ чекає на другий
     }
-    public synchronized void bowBack(Conflict bower) {
-        System.out.format("%s: %s"
-                        + " пропускає мене у відповідь!%n",
-                this.name, bower.getName());
+
+    public synchronized void finalizeDecision(Conflict partner) {
+        try {
+            // Додаємо затримку, щоб симулювати затримку ухвалення рішення
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.format("%s: Отримав рішення від відділу %s. Можна рухатися далі.%n",
+                this.departmentName, partner.getDepartmentName());
     }
 
     @Override
     public void run() {
-        bow();
+        negotiate();
     }
 }
